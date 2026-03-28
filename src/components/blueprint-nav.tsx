@@ -29,10 +29,46 @@ interface BlueprintNavProps {
   sections: { title: string; slug: string }[];
   activeSection: string;
   onSelect: (slug: string) => void;
+  /** Renders as a horizontal scrollable pill row instead of vertical list */
+  horizontal?: boolean;
 }
 
-export function BlueprintNav({ sections, activeSection, onSelect }: BlueprintNavProps) {
+export function BlueprintNav({ sections, activeSection, onSelect, horizontal = false }: BlueprintNavProps) {
   if (sections.length === 0) return null;
+
+  if (horizontal) {
+    return (
+      <nav aria-label="Blueprint sections" className="overflow-x-auto scrollbar-none">
+        <ul className="flex gap-1.5 px-4 py-2">
+          {sections.map(({ title, slug }, i) => {
+            const isActive = activeSection === slug;
+            return (
+              <li key={slug} className="shrink-0">
+                <button
+                  role="tab"
+                  aria-selected={isActive}
+                  onClick={() => onSelect(slug)}
+                  className={cn(
+                    "flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-medium whitespace-nowrap transition-all",
+                    "focus-visible:outline-2 focus-visible:outline-ring",
+                    getSectionColor(title),
+                    isActive
+                      ? "border-current bg-current/10 opacity-100"
+                      : "border-border opacity-50 hover:opacity-80"
+                  )}
+                >
+                  <span className="font-mono text-[9px] tabular-nums opacity-60">
+                    {(i + 1).toString().padStart(2, "0")}
+                  </span>
+                  {title}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    );
+  }
 
   return (
     <nav aria-label="Blueprint sections">

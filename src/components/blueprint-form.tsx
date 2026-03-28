@@ -89,9 +89,9 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
       </div>
 
       {/* Main controls row */}
-      <div className="flex flex-wrap items-end gap-2.5">
+      <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-end gap-2.5">
         {/* Facility Type */}
-        <div className="flex-[2] min-w-[170px] space-y-1">
+        <div className="w-full sm:flex-[2] sm:min-w-[170px] space-y-1">
           <Label className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
             Facility Type <span className="text-rose-500">*</span>
           </Label>
@@ -111,7 +111,7 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
         </div>
 
         {/* Province */}
-        <div className="flex-[1.5] min-w-[150px] space-y-1">
+        <div className="w-full sm:flex-[1.5] sm:min-w-[150px] space-y-1">
           <Label className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
             Province <span className="text-rose-500">*</span>
           </Label>
@@ -130,7 +130,7 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
         </div>
 
         {/* Scale */}
-        <div className="flex-[1] min-w-[130px] space-y-1">
+        <div className="w-full sm:flex-[1] sm:min-w-[130px] space-y-1">
           <Label className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
             Scale
           </Label>
@@ -149,7 +149,7 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
         </div>
 
         {/* Voltage */}
-        <div className="flex-[1] min-w-[130px] space-y-1">
+        <div className="w-full sm:flex-[1] sm:min-w-[130px] space-y-1">
           <Label className="text-[10px] font-medium text-muted-foreground uppercase tracking-wider">
             Voltage
           </Label>
@@ -168,12 +168,12 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
         </div>
 
         {/* Details toggle + Submit */}
-        <div className="flex items-end gap-2 shrink-0">
+        <div className="flex items-center gap-2 w-full sm:w-auto sm:shrink-0 sm:items-end">
           <button
             type="button"
             onClick={() => setShowDetails(!showDetails)}
             className={cn(
-              "h-9 px-3 flex items-center gap-1.5 rounded-md border border-border text-xs font-medium transition-colors",
+              "flex-1 sm:flex-none h-9 px-3 flex items-center justify-center gap-1.5 rounded-md border border-border text-xs font-medium transition-colors",
               showDetails
                 ? "bg-muted text-foreground border-border"
                 : "text-muted-foreground hover:text-foreground hover:border-border/80"
@@ -192,7 +192,7 @@ export function BlueprintForm({ onGenerate, isLoading }: BlueprintFormProps) {
               bg-primary text-primary-foreground
               hover:bg-primary/90 active:scale-[0.98]
               disabled:opacity-40 disabled:cursor-not-allowed disabled:active:scale-100
-              flex items-center gap-2 shrink-0"
+              flex-1 sm:flex-none flex items-center justify-center gap-2"
           >
             {isLoading ? (
               <>

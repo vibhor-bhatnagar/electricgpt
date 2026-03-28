@@ -138,7 +138,18 @@ export default function Home() {
             )}
 
             {/* Blueprint display — full remaining width */}
-            <div className="flex-1 min-w-0">
+            <div className="flex-1 min-w-0 flex flex-col gap-3">
+              {/* Mobile horizontal nav (hidden on lg+) */}
+              {hasContent && (
+                <div className="lg:hidden border border-border rounded-lg bg-card shadow-sm overflow-hidden">
+                  <BlueprintNav
+                    sections={sections}
+                    activeSection={activeSection}
+                    onSelect={setActiveSection}
+                    horizontal
+                  />
+                </div>
+              )}
               <BlueprintDisplay
                 content={content}
                 status={displayStatus}
